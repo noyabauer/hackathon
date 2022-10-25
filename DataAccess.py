@@ -1,11 +1,10 @@
 from firebase import Firebase
 import firebase_admin
 from firebase_admin import credentials, firestore
-from socket import *
-import re
 
 
-KEY_PATH = r"C:\Users\משתמש\hackathon\serviceAccountKey.json"
+
+KEY_PATH = r"/Users/noyabauer/Desktop/mechina/hackathon/hackathon/ServiceAccountKey.json"
 
 
 class UserAccess:

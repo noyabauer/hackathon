@@ -1,10 +1,11 @@
 import Const
-def accessability_type():
-    accessability = {
-        "wheelchair": True,
-        "vision": True,
-        "hearing": True
-    }
+
+accessability = {
+    "wheelchair": True,
+    "vision": True,
+    "hearing": True
+}
+def accessibility_type():
     if input(Const.B_OWNER_QUESTION_CINEMA1_WHEELCHAIR) == 'no' or \
             input(Const.B_OWNER_QUESTION_CINEMA2_WHEELCHAIR) == 'no' or \
             input(Const.B_OWNER_QUESTION_CINEMA3_WHEELCHAIR) == 'no' or \
@@ -20,7 +21,8 @@ def accessability_type():
     return accessability
 
 
-print(accessability_type())
+print(accessibility_type())
+
 
 
 

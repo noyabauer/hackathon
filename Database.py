@@ -2,9 +2,10 @@ import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
 import webbrowser
+import Gui
 
 cred = credentials.Certificate(
-    '/Users/noyabauer/Desktop/mechina/hackathon/hackathon/hackathon-f082d-firebase-adminsdk-8xvjk-176383c3f5.json')
+    r'C:\Users\daphna.c\PycharmProjects\lia_hackathon\hackathon\hackathon-f082d-firebase-adminsdk-8xvjk-176383c3f5.json')
 
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -64,17 +65,27 @@ def get_hearing_businesses():
 
 def get_website(name):
     business_ref = db.collection(u'Business-owners').document(name)
-    website=business_ref.get(field_paths={'website'}).to_dict().get('website')
+    website = business_ref.get(field_paths={'website'}).to_dict().get('website')
     return website
 
+
 def open_website(name):
-    website=get_website(name)
+    website = get_website(name)
     webbrowser.open(website)
 
-name = input("enter name ")
-category = input("enter category ")
-area = input("enter area ")
-address = input("enter address ")
+
+
+
+Gui.main_start()
+details_business = Gui.details_business
+name = details_business["name"]
+category = details_business["category"]
+area = details_business["area"]
+address = details_business["address"]
+# name = input("name")
+# category = input("category")
+# area = input("area")
+# address = input("adress")
 wheelchair = True
 vision = False
 hearing = False

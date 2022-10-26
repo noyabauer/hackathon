@@ -14,6 +14,21 @@ details_business = {
 }
 OPTIONS_AREA = ["Center", "North", "South"]
 answers = {}
+answers_wheelchair = {
+    "1": True,
+    "2": True,
+    "3": True,
+    "4": True,
+    "5": True,
+    "6": True,
+    "7": True
+}
+answers_hearing = {
+    "8": True
+}
+answers_vision = {
+    "9": True
+}
 list_numbers = []
 
 
@@ -56,157 +71,234 @@ def create_dict(category1):
 
 
 # region -----------------------------------HANDLE PRESSES - cinema------------------------------------------------
+# question 1
 def yes_pressed_once1():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_twice1).place(x=200, y=70)
+           width=15, command=yes_pressed_twice1).place(x=200, y=80)
+    answers["1"] = True
 
 
 def yes_pressed_twice1():
     Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_once1).place(x=200, y=70)
+           width=15, command=yes_pressed_once1).place(x=200, y=80)
 
 
 def no_pressed_once1():
     Button(screen_isAccessible, bg="red", fg="white", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_twice1).place(x=360, y=70)
+           width=15, command=no_pressed_twice1).place(x=360, y=80)
+    answers["1"] = False
 
 
 def no_pressed_twice1():
     Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_once1).place(x=360, y=70)
+           width=15, command=no_pressed_once1).place(x=360, y=80)
 
 
 # question 2
 def yes_pressed_once2():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_twice2).place(x=200, y=125)
+           width=15, command=yes_pressed_twice2).place(x=200, y=135)
+    answers["2"] = True
 
 
 def yes_pressed_twice2():
     Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_once2).place(x=200, y=125)
+           width=15, command=yes_pressed_once2).place(x=200, y=135)
 
 
 def no_pressed_once2():
     Button(screen_isAccessible, bg="red", fg="white", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_twice2).place(x=360, y=125)
+           width=15, command=no_pressed_twice2).place(x=360, y=135)
+    answers["2"] = False
 
 
 def no_pressed_twice2():
     Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_once2).place(x=360, y=125)
+           width=15, command=no_pressed_once2).place(x=360, y=135)
 
 
 # question 3
 def yes_pressed_once3():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_twice3).place(x=200, y=190)
+           width=15, command=yes_pressed_twice3).place(x=200, y=200)
+    answers["3"] = True
 
 
 def yes_pressed_twice3():
     Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_once3).place(x=200, y=190)
+           width=15, command=yes_pressed_once3).place(x=200, y=200)
 
 
 def no_pressed_once3():
     Button(screen_isAccessible, bg="red", fg="white", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_twice3).place(x=360, y=190)
+           width=15, command=no_pressed_twice3).place(x=360, y=200)
+    answers["3"] = False
 
 
 def no_pressed_twice3():
     Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_once3).place(x=360, y=190)
+           width=15, command=no_pressed_once3).place(x=360, y=200)
 
 
 # question 4
 def yes_pressed_once4():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_twice4).place(x=200, y=245)
+           width=15, command=yes_pressed_twice4).place(x=200, y=255)
+    answers["4"] = True
 
 
 def yes_pressed_twice4():
     Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_once4).place(x=200, y=245)
+           width=15, command=yes_pressed_once4).place(x=200, y=255)
 
 
 def no_pressed_once4():
     Button(screen_isAccessible, bg="red", fg="white", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_twice4).place(x=360, y=245)
+           width=15, command=no_pressed_twice4).place(x=360, y=255)
+    answers["4"] = False
 
 
 def no_pressed_twice4():
     Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_once4).place(x=360, y=245)
+           width=15, command=no_pressed_once4).place(x=360, y=255)
 
 
 # question 5
 def yes_pressed_once5():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_twice5).place(x=200, y=325)
+           width=15, command=yes_pressed_twice5).place(x=200, y=335)
+    answers["5"] = True
 
 
 def yes_pressed_twice5():
     Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_once5).place(x=200, y=325)
+           width=15, command=yes_pressed_once5).place(x=200, y=335)
 
 
 def no_pressed_once5():
     Button(screen_isAccessible, bg="red", fg="white", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_twice5).place(x=360, y=325)
+           width=15, command=no_pressed_twice5).place(x=360, y=335)
+    answers["5"] = False
 
 
 def no_pressed_twice5():
     Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_once5).place(x=360, y=325)
+           width=15, command=no_pressed_once5).place(x=360, y=335)
 
 
 # question 6
 def yes_pressed_once6():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_twice6).place(x=200, y=380)
+           width=15, command=yes_pressed_twice6).place(x=200, y=390)
+    answers["6"] = True
 
 
 def yes_pressed_twice6():
     Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_once6).place(x=200, y=380)
+           width=15, command=yes_pressed_once6).place(x=200, y=390)
 
 
 def no_pressed_once6():
     Button(screen_isAccessible, bg="red", fg="white", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_twice6).place(x=360, y=380)
+           width=15, command=no_pressed_twice6).place(x=360, y=390)
+    answers["6"] = False
 
 
 def no_pressed_twice6():
     Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_once6).place(x=360, y=380)
+           width=15, command=no_pressed_once6).place(x=360, y=390)
 
 
 # question 7
 def yes_pressed_once7():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_twice7).place(x=200, y=445)
+           width=15, command=yes_pressed_twice7).place(x=200, y=455)
+    answers["7"] = True
 
 
 def yes_pressed_twice7():
     Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
-           width=15, command=yes_pressed_once7).place(x=200, y=445)
+           width=15, command=yes_pressed_once7).place(x=200, y=455)
 
 
 def no_pressed_once7():
     Button(screen_isAccessible, bg="red", fg="white", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_twice7).place(x=360, y=445)
+           width=15, command=no_pressed_twice7).place(x=360, y=455)
+    answers["7"] = False
 
 
 def no_pressed_twice7():
     Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-           width=15, command=no_pressed_once2).place(x=360, y=445)
+           width=15, command=no_pressed_once2).place(x=360, y=455)
+
+
+# question 8
+def yes_pressed_once8():
+    Button(screen_questions2, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
+           width=15, command=yes_pressed_twice8).place(x=200, y=100)
+    answers["8"] = True
+
+
+def yes_pressed_twice8():
+    Button(screen_questions2, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
+           width=15, command=yes_pressed_once8).place(x=200, y=100)
+
+
+def no_pressed_once8():
+    Button(screen_questions2, bg="red", fg="white", text="No", font="calibri 10", height=1,
+           width=15, command=no_pressed_twice8).place(x=360, y=100)
+    answers["8"] = False
+
+
+def no_pressed_twice8():
+    Button(screen_questions2, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
+           width=15, command=no_pressed_once8).place(x=360, y=100)
+
+
+# question 9
+def yes_pressed_once9():
+    Button(screen_questions2, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
+           width=15, command=yes_pressed_twice9).place(x=200, y=190)
+    answers["9"] = True
+
+
+def yes_pressed_twice9():
+    Button(screen_questions2, bg="light grey", fg="black", text="Yes", font="calibri 10", height=1,
+           width=15, command=yes_pressed_once9).place(x=200, y=190)
+
+
+def no_pressed_once9():
+    Button(screen_questions2, bg="red", fg="white", text="No", font="calibri 10", height=1,
+           width=15, command=no_pressed_twice9).place(x=360, y=190)
+    answers["9"] = False
+
+
+def no_pressed_twice9():
+    Button(screen_questions2, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
+           width=15, command=no_pressed_once9).place(x=360, y=190)
 
 
 # endregion
 
 
 def create_window_question():
+    # region --------------------------------GLOBAL--------------------------------------
     global screen_isAccessible
+    global yes_btn1
+    global no_btn1
+    global yes_btn2
+    global no_btn2
+    global yes_btn3
+    global no_btn3
+    global yes_btn4
+    global no_btn4
+    global yes_btn5
+    global no_btn5
+    global yes_btn6
+    global no_btn6
+    global yes_btn7
+    global no_btn7
+    # endregion
     screen_isAccessible = Toplevel(screen)
     center()
     screen_isAccessible.title("Come check with us whether your business is accessible or not ! ")
@@ -219,86 +311,217 @@ def create_window_question():
     answer1 = StringVar()
 
     Label(screen_isAccessible, text="Please answer the questions below and press Yes/No *", bg='light blue',
-          font="calibri 10 bold").pack()
+          font="calibri 8 bold").pack()
+    Label(screen_isAccessible, text="Wheelchair Impairment:", bg='light blue',
+          font="calibri 15 bold").place(x=10, y=0)
 
+    # region ---------------------------------QUESTIONS------------------------------
     # question 1
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA1_WHEELCHAIR, bg='light blue',
-          font="calibri 15").place(x=37, y=15)
+          font="calibri 15").place(x=37, y=25)
     yes_btn1 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
                       height=1, width=15, command=yes_pressed_once1)
-    yes_btn1.place(x=200, y=70)
+    yes_btn1.place(x=200, y=80)
     no_btn1 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
                      width=15, command=no_pressed_once1)
-    no_btn1.place(x=360, y=70)
+    no_btn1.place(x=360, y=80)
 
     # question 2
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA2_WHEELCHAIR, bg='light blue',
-          font="calibri 15").place(x=130, y=95)
+          font="calibri 15").place(x=130, y=105)
     yes_btn2 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
                       height=1, width=15, command=yes_pressed_once2)
-    yes_btn2.place(x=200, y=125)
+    yes_btn2.place(x=200, y=135)
     no_btn2 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
                      width=15, command=no_pressed_once2)
-    no_btn2.place(x=360, y=125)
+    no_btn2.place(x=360, y=135)
 
     # question 3
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA3_WHEELCHAIR, bg='light blue',
-          font="calibri 15").place(x=140, y=155)
+          font="calibri 15").place(x=140, y=165)
     yes_btn3 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
                       height=1, width=15, command=yes_pressed_once3)
-    yes_btn3.place(x=200, y=190)
+    yes_btn3.place(x=200, y=200)
     no_btn3 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
                      width=15, command=no_pressed_once3)
-    no_btn3.place(x=360, y=190)
+    no_btn3.place(x=360, y=200)
 
     # question 4
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA5_WHEELCHAIR, bg='light blue',
-          font="calibri 15").place(x=170, y=215)
+          font="calibri 15").place(x=170, y=225)
     yes_btn4 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
                       height=1, width=15, command=yes_pressed_once4)
-    yes_btn4.place(x=200, y=245)
+    yes_btn4.place(x=200, y=255)
     no_btn4 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
                      width=15, command=no_pressed_once4)
-    no_btn4.place(x=360, y=245)
+    no_btn4.place(x=360, y=255)
 
     # question 5
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA6_WHEELCHAIR, bg='light blue',
-          font="calibri 15").place(x=100, y=270)
+          font="calibri 15").place(x=100, y=280)
     yes_btn5 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
                       height=1, width=15, command=yes_pressed_once5)
-    yes_btn5.place(x=200, y=325)
+    yes_btn5.place(x=200, y=335)
     no_btn5 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
                      width=15, command=no_pressed_once5)
-    no_btn5.place(x=360, y=325)
+    no_btn5.place(x=360, y=335)
 
     # question 6
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA8_WHEELCHAIR, bg='light blue',
-          font="calibri 15").place(x=140, y=350)
+          font="calibri 15").place(x=140, y=360)
     yes_btn6 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
                       height=1, width=15, command=yes_pressed_once6)
-    yes_btn6.place(x=200, y=380)
+    yes_btn6.place(x=200, y=390)
     no_btn6 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
                      width=15, command=no_pressed_once6)
-    no_btn6.place(x=360, y=380)
+    no_btn6.place(x=360, y=390)
 
     # question 7
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA9_WHEELCHAIR, bg='light blue',
-          font="calibri 15").place(x=90, y=410)
+          font="calibri 15").place(x=90, y=420)
     yes_btn7 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
                       height=1, width=15, command=yes_pressed_once7)
-    yes_btn7.place(x=200, y=445)
+    yes_btn7.place(x=200, y=455)
     no_btn7 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
                      width=15, command=no_pressed_once7)
-    no_btn7.place(x=360, y=445)
+    no_btn7.place(x=360, y=455)
 
+    # endregion
     submit1 = Button(screen_isAccessible, bg="light grey", fg="blue", text="Next", font="calibri 10", height=1,
-                    width=15, command=next_page)
+                     width=15, command=next_page)
     submit1.place(x=570, y=470)
     screen_isAccessible.mainloop()
 
 
 def next_page():
-    pass
+    # region ---------------------------------GLOBAL--------------------------------------------
+    global screen_isAccessible
+    global screen_questions2
+    global yes_btn1
+    global no_btn1
+    global yes_btn2
+    global no_btn2
+    global yes_btn3
+    global no_btn3
+    global yes_btn4
+    global no_btn4
+    global yes_btn5
+    global no_btn5
+    global yes_btn6
+    global no_btn6
+    global yes_btn7
+    global no_btn7
+    global yes_btn8
+    global no_btn8
+    global yes_btn9
+    global no_btn9
+    # endregion
+    screen_questions2 = Toplevel(screen_isAccessible)
+    center()
+    screen_questions2.title("Come check with us whether your business is accessible or not ! - Vision&Hearing")
+    screen_questions2.geometry(f"{WIDTH + 100}x{HEIGHT}")
+    center(screen_questions2)
+    screen_questions2.configure(bg='light blue')
+
+    # region --------------------------------QUESTIONS----------------------------------------
+    # question 8
+    Label(screen_questions2, text="Vision Impairment:", bg='light blue',
+          font="calibri 15 bold").place(x=60, y=5)
+
+    Label(screen_questions2, text=B_OWNER_QUESTION_CINEMA4_VISION, bg='light blue',
+          font="calibri 15").place(x=60, y=40)
+    yes_btn8 = Button(screen_questions2, bg="light grey", fg="black", text="Yes", font="calibri 10",
+                      height=1, width=15, command=yes_pressed_once8)
+    yes_btn8.place(x=200, y=100)
+    no_btn8 = Button(screen_questions2, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
+                     width=15, command=no_pressed_once8)
+    no_btn8.place(x=360, y=100)
+
+    # question 9
+    Label(screen_questions2, text="Hearing Impairment:", bg='light blue',
+          font="calibri 15 bold").place(x=60, y=130)
+
+    Label(screen_questions2, text=B_OWNER_QUESTION_CINEMA7_HEARING, bg='light blue',
+          font="calibri 15").place(x=130, y=160)
+    yes_btn9 = Button(screen_questions2, bg="light grey", fg="black", text="Yes", font="calibri 10",
+                      height=1, width=15, command=yes_pressed_once9)
+    yes_btn9.place(x=200, y=190)
+    no_btn9 = Button(screen_questions2, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
+                     width=15, command=no_pressed_once9)
+    no_btn9.place(x=360, y=190)
+    # endregion
+    submit2 = Button(screen_questions2, bg="light grey", fg="blue", text="Done", font="calibri 10", height=1,
+                     width=15, command=done)
+    submit2.place(x=570, y=470)
+
+    screen_questions2.mainloop()
+
+
+wheelchair_accessible = True
+wheelchair_answers = []
+vision_accessible = True
+vision_answers = []
+hearing_accessible = True
+hearing_answers = []
+
+
+def create_yesno_lists():
+    # region ---------------------------------GLOBAL--------------------------------------------
+    global screen_isAccessible
+    global screen_questions2
+    global yes_btn1
+    global no_btn1
+    global yes_btn2
+    global no_btn2
+    global yes_btn3
+    global no_btn3
+    global yes_btn4
+    global no_btn4
+    global yes_btn5
+    global no_btn5
+    global yes_btn6
+    global no_btn6
+    global yes_btn7
+    global no_btn7
+    global yes_btn8
+    global no_btn8
+    global yes_btn9
+    global no_btn9
+    # endregion
+    wheelchair_answers.append((yes_btn1, no_btn1))
+    wheelchair_answers.append((yes_btn2, no_btn2))
+    wheelchair_answers.append((yes_btn3, no_btn3))
+    wheelchair_answers.append((yes_btn4, no_btn4))
+    wheelchair_answers.append((yes_btn5, no_btn5))
+    wheelchair_answers.append((yes_btn6, no_btn6))
+    wheelchair_answers.append((yes_btn7, no_btn6))
+
+    hearing_answers.append((yes_btn8, no_btn8))
+
+    vision_answers.append((yes_btn9, no_btn8))
+
+
+def done():
+    # region ---------------------------------GLOBAL--------------------------------------------
+    global screen_isAccessible
+    global screen_questions2
+    global yes_btn1
+    global no_btn1
+    global yes_btn1
+    global no_btn1
+    global yes_btn1
+    global no_btn1
+    global yes_btn1
+    global no_btn1
+    global yes_btn1
+    global no_btn1
+    global yes_btn1
+    global no_btn1
+    global yes_btn1
+    global no_btn1
+    # endregion
+    # for answer in answers.:
+
 
 
 def restaurant_pressed1():
@@ -313,13 +536,13 @@ def restaurant_pressed2():
 
 
 def cinema_pressed1():
-    Button(screen_owner, bg="dark blue", fg="white", text="Cinema", font="calibri 15", height=1,
+    Button(screen_owner, bg="dark blue", fg="white", text="Cinema / Theater", font="calibri 15", height=1,
            width=15, command=cinema_pressed2).place(x=230, y=400)
     details_business["category"] = "cinema"
 
 
 def cinema_pressed2():
-    Button(screen_owner, bg="light grey", fg="black", text="Cinema", font="calibri 15", height=1,
+    Button(screen_owner, bg="light grey", fg="black", text="Cinema / Theater", font="calibri 15", height=1,
            width=15, command=cinema_pressed1).place(x=230, y=400)
 
 
@@ -360,7 +583,7 @@ def owner():
     restaurant_btn = Button(screen_owner, bg="light grey", fg="black", text="Restaurant", font="calibri 15", height=1,
                             width=15, command=restaurant_pressed1)
     restaurant_btn.place(x=40, y=400)
-    cinema_btn = Button(screen_owner, bg="light grey", fg="black", text="Cinema", font="calibri 15", height=1,
+    cinema_btn = Button(screen_owner, bg="light grey", fg="black", text="Cinema / Theater", font="calibri 15", height=1,
                         width=15, command=cinema_pressed1)
     cinema_btn.place(x=230, y=400)
     store_btn = Button(screen_owner, bg="light grey", fg="black", text="Store", font="calibri 15", height=1,

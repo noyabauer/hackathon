@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
+import webbrowser
 
 cred = credentials.Certificate(
     '/Users/noyabauer/Desktop/mechina/hackathon/hackathon/hackathon-f082d-firebase-adminsdk-8xvjk-176383c3f5.json')
@@ -62,21 +63,24 @@ def get_hearing_businesses():
 
 
 def get_website(name):
-    cities_ref = db.collection(u'cities')
-    cities_ref.order_by(u'state').order_by(
-        u'population', direction=firestore.Query.DESCENDING)
+    business_ref = db.collection(u'Business-owners').document(name)
+    website=business_ref.get(field_paths={'website'}).to_dict().get('website')
+    return website
 
+def open_website(name):
+    website=get_website(name)
+    webbrowser.open(website)
 
 name = input("enter name ")
-# category = input("enter category ")
-# area = input("enter area ")
-# address = input("enter address ")
-# wheelchair = True
-# vision = False
-# hearing = False
-# website = input("enter a link for your website")
-# add_to_database(name, category, area, address, wheelchair, vision, hearing, website)
-# get_center_businesses()
-# get_north_businesses()
-# get_hearing_businesses()
-print (get_website(name))
+category = input("enter category ")
+area = input("enter area ")
+address = input("enter address ")
+wheelchair = True
+vision = False
+hearing = False
+website = input("enter a link for your website ")
+add_to_database(name, category, area, address, wheelchair, vision, hearing, website)
+get_center_businesses()
+get_north_businesses()
+get_hearing_businesses()
+open_website(name)

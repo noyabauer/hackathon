@@ -2,10 +2,10 @@ import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
 import webbrowser
-import Gui
+
 
 cred = credentials.Certificate(
-    r'C:\Users\daphna.c\PycharmProjects\lia_hackathon\hackathon\hackathon-f082d-firebase-adminsdk-8xvjk-176383c3f5.json')
+    r'C:\Users\משתמש\final_hackathon\hackathon\hackathon-f082d-firebase-adminsdk-8xvjk-176383c3f5.json')
 
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -76,22 +76,22 @@ def open_website(name):
 
 
 
-Gui.main_start()
-details_business = Gui.details_business
-name = details_business["name"]
-category = details_business["category"]
-area = details_business["area"]
-address = details_business["address"]
-# name = input("name")
-# category = input("category")
-# area = input("area")
-# address = input("adress")
-wheelchair = True
-vision = False
-hearing = False
-website = input("enter a link for your website ")
-add_to_database(name, category, area, address, wheelchair, vision, hearing, website)
-get_center_businesses()
-get_north_businesses()
-get_hearing_businesses()
-open_website(name)
+# Gui.main_start()
+# details_business = Gui.details_business
+# name = details_business["name"]
+# category = details_business["category"]
+# area = details_business["area"]
+# address = details_business["address"]
+# # name = input("name")
+# # category = input("category")
+# # area = input("area")
+# # address = input("adress")
+# wheelchair = True
+# vision = False
+# hearing = False
+# website = input("enter a link for your website ")
+# add_to_database(name, category, area, address, wheelchair, vision, hearing, website)
+# get_center_businesses()
+# get_north_businesses()
+# get_hearing_businesses()
+# open_website(name)

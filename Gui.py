@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 # from hackathon.DataAccess import *
 from hackathon.Const import *
+from hackathon.Database import *
 
 screen = Tk()
 screen.title(TITLE)
@@ -12,23 +13,22 @@ details_business = {
     "address": "",
     "category": ""
 }
+OPTIONS_ACCESSIBILITY = ["wheelchair", "vision impairment", "hearing impairment"]
+OPTIONS_CATEGORY = ["Cinema / Theater", "Restaurant", "Store"]
+costumer_choice = {
+    "accessibility_type": None,
+    "area": None,
+    "category": None
+}
 OPTIONS_AREA = ["Center", "North", "South"]
+OPTIONS_ANSWERS = ["Yes", "No"]
 answers = {}
-answers_wheelchair = {
-    "1": True,
-    "2": True,
-    "3": True,
-    "4": True,
-    "5": True,
-    "6": True,
-    "7": True
+accessibility_business = {
+    "wheelchair": True,
+    "vision": True,
+    "hearing": True
 }
-answers_hearing = {
-    "8": True
-}
-answers_vision = {
-    "9": True
-}
+fitting_businesses = []
 list_numbers = []
 
 
@@ -68,6 +68,104 @@ def create_dict(category1):
     for i in range(num_of_questions):
         answers[i + 1] = list_numbers[i]
     print(answers)
+
+
+def create_window_question_store():
+    # region --------------------------------GLOBAL--------------------------------------
+    global screen_isAccessible
+    global answer1
+    global answer2
+    global answer3
+    global answer4
+    global answer5
+    global answer6
+    global answer7
+    # endregion
+    screen_isAccessible = Toplevel(screen)
+    center()
+    screen_isAccessible.title("Come check with us whether your business is accessible or not ! ")
+    screen_isAccessible.geometry(f"{WIDTH + 100}x{HEIGHT}")
+    center(screen_isAccessible)
+    screen_isAccessible.configure(bg='light blue')
+
+    create_dict(details_business["category"])
+
+    answer1 = StringVar()
+    answer2 = StringVar()
+    answer3 = StringVar()
+    answer4 = StringVar()
+    answer5 = StringVar()
+    answer6 = StringVar()
+    answer7 = StringVar()
+
+    Label(screen_isAccessible, text="Please answer the questions below and press Yes/No *", bg='light blue',
+          font="calibri 8 bold").pack()
+    Label(screen_isAccessible, text="Wheelchair Impairment:", bg='light blue',
+          font="calibri 10 bold").place(x=10, y=0)
+
+    # region ---------------------------------QUESTIONS------------------------------
+    # question 1
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE1_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=37, y=20)
+    answer1 = StringVar(screen_isAccessible)
+    answer1.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer1, *OPTIONS_ANSWERS)
+    options.place(x=280, y=70, width=120, height=30)
+
+    # question 2
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE2_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=130, y=95)
+    answer2 = StringVar(screen_isAccessible)
+    answer2.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer2, *OPTIONS_ANSWERS)
+    options.place(x=280, y=120, width=120, height=30)
+
+    # question 3
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE4_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=140, y=145)
+    answer3 = StringVar(screen_isAccessible)
+    answer3.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer3, *OPTIONS_ANSWERS)
+    options.place(x=280, y=200, width=120, height=30)
+
+    # question 4
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE5_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=170, y=225)
+    answer4 = StringVar(screen_isAccessible)
+    answer4.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer4, *OPTIONS_ANSWERS)
+    options.place(x=280, y=255, width=120, height=30)
+
+    # question 5
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE6_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=100, y=280)
+    answer5 = StringVar(screen_isAccessible)
+    answer5.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer5, *OPTIONS_ANSWERS)
+    options.place(x=280, y=310, width=120, height=30)
+
+    # question 6
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE7_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=140, y=350)
+    answer6 = StringVar(screen_isAccessible)
+    answer6.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer6, *OPTIONS_ANSWERS)
+    options.place(x=280, y=380, width=120, height=30)
+
+    # question 7
+    Label(screen_isAccessible, text="Wheelchair Impairment:", bg='light blue',
+          font="calibri 10 bold").place(x=10, y=405)
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE3_VISION, bg='light blue',
+          font="calibri 15").place(x=90, y=420)
+    answer7 = StringVar(screen_isAccessible)
+    answer7.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer7, *OPTIONS_ANSWERS)
+    options.place(x=280, y=470, width=120, height=30)
+    # endregion
+    submit1 = Button(screen_isAccessible, bg="light grey", fg="blue", text="Next", font="calibri 10", height=1,
+                     width=15, command=next_page)
+    submit1.place(x=570, y=470)
+    screen_isAccessible.mainloop()
 
 
 # region -----------------------------------HANDLE PRESSES - cinema------------------------------------------------
@@ -281,23 +379,16 @@ def no_pressed_twice9():
 # endregion
 
 
-def create_window_question():
+def create_window_question_cinema():
     # region --------------------------------GLOBAL--------------------------------------
     global screen_isAccessible
-    global yes_btn1
-    global no_btn1
-    global yes_btn2
-    global no_btn2
-    global yes_btn3
-    global no_btn3
-    global yes_btn4
-    global no_btn4
-    global yes_btn5
-    global no_btn5
-    global yes_btn6
-    global no_btn6
-    global yes_btn7
-    global no_btn7
+    global answer1
+    global answer2
+    global answer3
+    global answer4
+    global answer5
+    global answer6
+    global answer7
     # endregion
     screen_isAccessible = Toplevel(screen)
     center()
@@ -309,6 +400,12 @@ def create_window_question():
     create_dict(details_business["category"])
 
     answer1 = StringVar()
+    answer2 = StringVar()
+    answer3 = StringVar()
+    answer4 = StringVar()
+    answer5 = StringVar()
+    answer6 = StringVar()
+    answer7 = StringVar()
 
     Label(screen_isAccessible, text="Please answer the questions below and press Yes/No *", bg='light blue',
           font="calibri 8 bold").pack()
@@ -319,73 +416,58 @@ def create_window_question():
     # question 1
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA1_WHEELCHAIR, bg='light blue',
           font="calibri 15").place(x=37, y=25)
-    yes_btn1 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once1)
-    yes_btn1.place(x=200, y=80)
-    no_btn1 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once1)
-    no_btn1.place(x=360, y=80)
+    answer1 = StringVar(screen_isAccessible)
+    answer1.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer1, *OPTIONS_ANSWERS)
+    options.place(x=280, y=80, width=120, height=30)
 
     # question 2
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA2_WHEELCHAIR, bg='light blue',
           font="calibri 15").place(x=130, y=105)
-    yes_btn2 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once2)
-    yes_btn2.place(x=200, y=135)
-    no_btn2 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once2)
-    no_btn2.place(x=360, y=135)
+    answer2 = StringVar(screen_isAccessible)
+    answer2.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer2, *OPTIONS_ANSWERS)
+    options.place(x=280, y=135, width=120, height=30)
 
     # question 3
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA3_WHEELCHAIR, bg='light blue',
           font="calibri 15").place(x=140, y=165)
-    yes_btn3 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once3)
-    yes_btn3.place(x=200, y=200)
-    no_btn3 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once3)
-    no_btn3.place(x=360, y=200)
+    answer3 = StringVar(screen_isAccessible)
+    answer3.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer3, *OPTIONS_ANSWERS)
+    options.place(x=280, y=200, width=120, height=30)
 
     # question 4
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA5_WHEELCHAIR, bg='light blue',
           font="calibri 15").place(x=170, y=225)
-    yes_btn4 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once4)
-    yes_btn4.place(x=200, y=255)
-    no_btn4 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once4)
-    no_btn4.place(x=360, y=255)
+    answer4 = StringVar(screen_isAccessible)
+    answer4.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer4, *OPTIONS_ANSWERS)
+    options.place(x=280, y=255, width=120, height=30)
 
     # question 5
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA6_WHEELCHAIR, bg='light blue',
           font="calibri 15").place(x=100, y=280)
-    yes_btn5 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once5)
-    yes_btn5.place(x=200, y=335)
-    no_btn5 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once5)
-    no_btn5.place(x=360, y=335)
+    answer5 = StringVar(screen_isAccessible)
+    answer5.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer5, *OPTIONS_ANSWERS)
+    options.place(x=280, y=335, width=120, height=30)
 
     # question 6
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA8_WHEELCHAIR, bg='light blue',
           font="calibri 15").place(x=140, y=360)
-    yes_btn6 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once6)
-    yes_btn6.place(x=200, y=390)
-    no_btn6 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once6)
-    no_btn6.place(x=360, y=390)
+    answer6 = StringVar(screen_isAccessible)
+    answer6.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer6, *OPTIONS_ANSWERS)
+    options.place(x=280, y=390, width=120, height=30)
 
     # question 7
     Label(screen_isAccessible, text=B_OWNER_QUESTION_CINEMA9_WHEELCHAIR, bg='light blue',
           font="calibri 15").place(x=90, y=420)
-    yes_btn7 = Button(screen_isAccessible, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once7)
-    yes_btn7.place(x=200, y=455)
-    no_btn7 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once7)
-    no_btn7.place(x=360, y=455)
-
+    answer7 = StringVar(screen_isAccessible)
+    answer7.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer7, *OPTIONS_ANSWERS)
+    options.place(x=280, y=455, width=120, height=30)
     # endregion
     submit1 = Button(screen_isAccessible, bg="light grey", fg="blue", text="Next", font="calibri 10", height=1,
                      width=15, command=next_page)
@@ -397,25 +479,19 @@ def next_page():
     # region ---------------------------------GLOBAL--------------------------------------------
     global screen_isAccessible
     global screen_questions2
-    global yes_btn1
-    global no_btn1
-    global yes_btn2
-    global no_btn2
-    global yes_btn3
-    global no_btn3
-    global yes_btn4
-    global no_btn4
-    global yes_btn5
-    global no_btn5
-    global yes_btn6
-    global no_btn6
-    global yes_btn7
-    global no_btn7
-    global yes_btn8
-    global no_btn8
-    global yes_btn9
-    global no_btn9
+    global answer1
+    global answer2
+    global answer3
+    global answer4
+    global answer5
+    global answer6
+    global answer7
+    global answer8
+    global answer9
     # endregion
+    if answer1.get() == "No" or answer2.get() == "No" or answer3.get() == "No" or answer4.get() == "No" or answer5.get() \
+            == "No" or answer6.get() == "No" or answer7.get() == "No":
+        accessibility_business["wheelchair"] = False
     screen_questions2 = Toplevel(screen_isAccessible)
     center()
     screen_questions2.title("Come check with us whether your business is accessible or not ! - Vision&Hearing")
@@ -430,12 +506,10 @@ def next_page():
 
     Label(screen_questions2, text=B_OWNER_QUESTION_CINEMA4_VISION, bg='light blue',
           font="calibri 15").place(x=60, y=40)
-    yes_btn8 = Button(screen_questions2, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once8)
-    yes_btn8.place(x=200, y=100)
-    no_btn8 = Button(screen_questions2, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once8)
-    no_btn8.place(x=360, y=100)
+    answer8 = StringVar(screen_questions2)
+    answer8.set("select option")  # default value
+    options = OptionMenu(screen_questions2, answer8, *OPTIONS_ANSWERS)
+    options.place(x=280, y=100, width=120, height=30)
 
     # question 9
     Label(screen_questions2, text="Hearing Impairment:", bg='light blue',
@@ -443,85 +517,40 @@ def next_page():
 
     Label(screen_questions2, text=B_OWNER_QUESTION_CINEMA7_HEARING, bg='light blue',
           font="calibri 15").place(x=130, y=160)
-    yes_btn9 = Button(screen_questions2, bg="light grey", fg="black", text="Yes", font="calibri 10",
-                      height=1, width=15, command=yes_pressed_once9)
-    yes_btn9.place(x=200, y=190)
-    no_btn9 = Button(screen_questions2, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once9)
-    no_btn9.place(x=360, y=190)
+    answer9 = StringVar(screen_questions2)
+    answer9.set("select option")  # default value
+    options = OptionMenu(screen_questions2, answer9, *OPTIONS_ANSWERS)
+    options.place(x=280, y=190, width=120, height=30)
     # endregion
     submit2 = Button(screen_questions2, bg="light grey", fg="blue", text="Done", font="calibri 10", height=1,
-                     width=15, command=done)
+                     width=15, command=done_cinema)
     submit2.place(x=570, y=470)
 
     screen_questions2.mainloop()
 
 
-wheelchair_accessible = True
-wheelchair_answers = []
-vision_accessible = True
-vision_answers = []
-hearing_accessible = True
-hearing_answers = []
-
-
-def create_yesno_lists():
+def done_cinema():
     # region ---------------------------------GLOBAL--------------------------------------------
     global screen_isAccessible
     global screen_questions2
-    global yes_btn1
-    global no_btn1
-    global yes_btn2
-    global no_btn2
-    global yes_btn3
-    global no_btn3
-    global yes_btn4
-    global no_btn4
-    global yes_btn5
-    global no_btn5
-    global yes_btn6
-    global no_btn6
-    global yes_btn7
-    global no_btn7
-    global yes_btn8
-    global no_btn8
-    global yes_btn9
-    global no_btn9
+    global answer1
+    global answer2
+    global answer3
+    global answer4
+    global answer5
+    global answer6
+    global answer7
+    global answer8
+    global answer9
     # endregion
-    wheelchair_answers.append((yes_btn1, no_btn1))
-    wheelchair_answers.append((yes_btn2, no_btn2))
-    wheelchair_answers.append((yes_btn3, no_btn3))
-    wheelchair_answers.append((yes_btn4, no_btn4))
-    wheelchair_answers.append((yes_btn5, no_btn5))
-    wheelchair_answers.append((yes_btn6, no_btn6))
-    wheelchair_answers.append((yes_btn7, no_btn6))
-
-    hearing_answers.append((yes_btn8, no_btn8))
-
-    vision_answers.append((yes_btn9, no_btn8))
-
-
-def done():
-    # region ---------------------------------GLOBAL--------------------------------------------
-    global screen_isAccessible
-    global screen_questions2
-    global yes_btn1
-    global no_btn1
-    global yes_btn1
-    global no_btn1
-    global yes_btn1
-    global no_btn1
-    global yes_btn1
-    global no_btn1
-    global yes_btn1
-    global no_btn1
-    global yes_btn1
-    global no_btn1
-    global yes_btn1
-    global no_btn1
-    # endregion
-    # for answer in answers.:
-
+    if answer8.get() == "No":
+        accessibility_business["vision"] = False
+    if answer9.get() == "No":
+        accessibility_business["hearing"] = False
+    print(accessibility_business)
+    add_to_database(details_business["name"], details_business["category"], details_business["area"],
+                    details_business["address"], accessibility_business["wheelchair"], accessibility_business["vision"],
+                    accessibility_business["hearing"], "https://realpython.com/iterate-through-dictionary-python/")
 
 
 def restaurant_pressed1():
@@ -538,7 +567,7 @@ def restaurant_pressed2():
 def cinema_pressed1():
     Button(screen_owner, bg="dark blue", fg="white", text="Cinema / Theater", font="calibri 15", height=1,
            width=15, command=cinema_pressed2).place(x=230, y=400)
-    details_business["category"] = "cinema"
+    details_business["category"] = "cinema / theater"
 
 
 def cinema_pressed2():
@@ -609,18 +638,95 @@ def owner_done():
     details_business["area"] = variable.get()
     details_business["address"] = address.get()
     print(details_business)
-    create_window_question()
+    if details_business["category"] == "cinema / theater":
+        create_window_question_cinema()
+    elif details_business["category"] == "store":
+        create_window_question_store()
+    elif details_business["category"] == "restaurant":
+        pass
+    add_to_database(details_business["name"], details_business["category"], details_business["area"],
+                    details_business["address"], accessibility_business["wheelchair"], accessibility_business["vision"],
+                    accessibility_business["hearing"], "https://realpython.com/iterate-through-dictionary-python/")
+    print("done")
 
 
+# region -----------------------------------CUSTOMER GUI---------------------------------------------
 def customer():
     global screen_customer
+    global variable1
+    global variable2
+    global variable3
     screen_customer = Toplevel(screen)
     screen_customer.title("Customer")
     screen_customer.geometry(f"{WIDTH}x{HEIGHT}")
     center(screen_customer)
     screen_customer.configure(bg='light blue')
     question = Label(screen_customer, text="Hello Customer", bg="light blue", font=("arial italic", 18)).pack()
+    Label(screen_customer, text="choose type of accessibility: *", bg='light blue', font="calibri 20").place(
+        x=150, y=50)
+    variable1 = StringVar(screen_customer)
+    variable1.set("select option")  # default value
+    options = OptionMenu(screen_customer, variable1, *OPTIONS_ACCESSIBILITY)
+    options.place(x=150, y=125, width=175, height=30)
+    Label(screen_customer, text="choose area:*", bg='light blue', font="calibri 20").place(
+        x=150, y=200)
+    variable2 = StringVar(screen_customer)
+    variable2.set("select option")  # default value
+    options = OptionMenu(screen_customer, variable2, *OPTIONS_AREA)
+    options.place(x=150, y=275, width=120, height=30)
+    Label(screen_customer, text="choose place to go:*", bg='light blue', font="calibri 20").place(
+        x=150, y=350)
+    variable3 = StringVar(screen_customer)
+    variable3.set("select option")  # default value
+    options = OptionMenu(screen_customer, variable3, *OPTIONS_CATEGORY)
+    options.place(x=150, y=425, width=175, height=30)
+    submit1 = Button(screen_customer, bg="light grey", fg="blue", text="submit", font="calibri 10", height=1,
+                     width=15, command=submit_costumer_choice)
+    submit1.place(x=450, y=450)
 
+
+def submit_costumer_choice():
+    costumer_choice["accessibility_type"] = variable1.get()
+    costumer_choice["area"] = variable2.get()
+    costumer_choice["category"] = variable3.get()
+    print(costumer_choice)
+    get_business_by_costumer_choice(costumer_choice["area"], costumer_choice["category"])
+
+
+def get_business_by_costumer_choice(area, category):
+    docs = db.collection(u'Business-owners').where(u'area', u'==', area).where(u'category', u'==', category).stream()
+    for doc in docs:
+        busi = doc.to_dict()
+        fitting_businesses.append(busi)
+    print(fitting_businesses)
+    businesses(fitting_businesses)
+
+
+def businesses(fitting_businesses):
+    global screen_business
+    screen_business = Toplevel(screen)
+    screen_business.title("list of businesses")
+    screen_business.geometry(f"{WIDTH}x{HEIGHT}")
+    center(screen_business)
+    screen_business.configure(bg='light blue')
+    Label(screen_business, text="list of businesses for you", bg="light blue", font=("arial italic", 18)).pack()
+    x = int(150)
+    y = int(100)
+    for business in fitting_businesses:
+        name = business["name"]
+        create_button(name, x, y)
+        x = 30
+        y += 30
+
+
+def create_button(text, x_coor, y_coor):
+    global screen_business
+    button = Button(screen_business, bg="light grey", fg="blue", text=text, font="calibri 10", height=1,
+                    width=15, command=submit_costumer_choice)
+    button.place(x=x_coor, y=y_coor)
+
+
+# endregion
 
 def main_start():
     # Add a canvas widget

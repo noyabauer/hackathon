@@ -41,10 +41,10 @@ VISION_RESTAURANT_QUESTION = [B_OWNER_QUESTION_RESTAURANT3_VISION,B_OWNER_QUESTI
 
 
 
-B_OWNER_QUESTION_STORE1_WHEELCHAIR = "in case you have more than 1 floor,does your business have an elevator?(if you have 1 floor press 'yes')"
+B_OWNER_QUESTION_STORE1_WHEELCHAIR = "in case you have more than 1 floor,does your business have an elevator?\n(if you have 1 floor press 'yes')"
 B_OWNER_QUESTION_STORE2_WHEELCHAIR = "does your door width equal or bigger than 80 cm?"
-B_OWNER_QUESTION_STORE3_VISION = "in case your door is transparent, do you have a colored sticker?(if your door isn't transparent press 'yes')"
-B_OWNER_QUESTION_STORE4_WHEELCHAIR = "in case you have stairs in the entrance,do you have a ramp?(if you don't have stairs press 'yes')"
+B_OWNER_QUESTION_STORE3_VISION = "in case your door is transparent, do you have a colored sticker?\n(if your door isn't transparent press 'yes')"
+B_OWNER_QUESTION_STORE4_WHEELCHAIR = "in case you have stairs in the entrance,do you have a ramp?\n(if you don't have stairs press 'yes')"
 B_OWNER_QUESTION_STORE5_WHEELCHAIR = "do you have bathroom stalls for handicaps?"
 B_OWNER_QUESTION_STORE6_WHEELCHAIR = "do you have handicaps parking near your business?"
 B_OWNER_QUESTION_STORE7_WHEELCHAIR = "does your business's corridor width equal or bigger than 130 cm?"

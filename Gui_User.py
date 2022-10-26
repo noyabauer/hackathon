@@ -6,7 +6,7 @@ from firebase_admin import credentials
 fitting_businesses=[]
 
 cred = credentials.Certificate(
-    r'C:\Users\daphna.c\PycharmProjects\lia_hackathon\hackathon\hackathon-f082d-firebase-adminsdk-8xvjk-176383c3f5.json')
+    r'C:\Users\משתמש\final_hackathon\hackathon\hackathon-f082d-firebase-adminsdk-8xvjk-176383c3f5.json')
 
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -110,7 +110,7 @@ def create_button(text,x_coor,y_coor):
 
 
 
-def main_start():
+def start_customer():
     # Add a canvas widget
     center()
     canvas = Canvas(screen, width=WIDTH, height=HEIGHT, bg="light blue")

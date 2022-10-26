@@ -55,7 +55,7 @@ def create_dict(category1):
     print(answers)
 
 
-# region -----------------------------------HANDLE PRESSES------------------------------------------------
+# region -----------------------------------HANDLE PRESSES - cinema------------------------------------------------
 def yes_pressed_once1():
     Button(screen_isAccessible, bg="dark green", fg="white", text="Yes", font="calibri 10", height=1,
            width=15, command=yes_pressed_twice1).place(x=200, y=70)
@@ -258,7 +258,7 @@ def create_window_question():
                       height=1, width=15, command=yes_pressed_once4)
     yes_btn4.place(x=200, y=245)
     no_btn4 = Button(screen_isAccessible, bg="light grey", fg="black", text="No", font="calibri 10", height=1,
-                     width=15, command=no_pressed_once4())
+                     width=15, command=no_pressed_once4)
     no_btn4.place(x=360, y=245)
 
     # question 5

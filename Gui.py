@@ -11,10 +11,11 @@ details_business = {
     "name": "",
     "area": "",
     "address": "",
-    "category": ""
+    "category": "",
+    "website": ""
 }
-OPTIONS_ACCESSIBILITY = ["wheelchair", "vision impairment", "hearing impairment"]
-OPTIONS_CATEGORY = ["Cinema / Theater", "Restaurant", "Store"]
+OPTIONS_ACCESSIBILITY = ["wheelchair", "vision", "hearing"]
+OPTIONS_CATEGORY = ["Cinema / Theater", "restaurant", "store"]
 costumer_choice = {
     "accessibility_type": None,
     "area": None,
@@ -153,7 +154,7 @@ def create_window_question_store():
     options.place(x=280, y=380, width=120, height=30)
 
     # question 7
-    Label(screen_isAccessible, text="Wheelchair Impairment:", bg='light blue',
+    Label(screen_isAccessible, text="Vision Impairment:", bg='light blue',
           font="calibri 10 bold").place(x=10, y=405)
     Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE3_VISION, bg='light blue',
           font="calibri 15").place(x=90, y=420)
@@ -163,7 +164,105 @@ def create_window_question_store():
     options.place(x=280, y=470, width=120, height=30)
     # endregion
     submit1 = Button(screen_isAccessible, bg="light grey", fg="blue", text="Next", font="calibri 10", height=1,
-                     width=15, command=next_page)
+                     width=15, command=done_store)
+    submit1.place(x=570, y=470)
+    screen_isAccessible.mainloop()
+
+
+def create_window_question_restaurant():
+    # region --------------------------------GLOBAL--------------------------------------
+    global screen_isAccessible
+    global answer1
+    global answer2
+    global answer3
+    global answer4
+    global answer5
+    global answer6
+    global answer7
+    # endregion
+    screen_isAccessible = Toplevel(screen)
+    center()
+    screen_isAccessible.title("Come check with us whether your business is accessible or not ! ")
+    screen_isAccessible.geometry(f"{WIDTH + 100}x{HEIGHT}")
+    center(screen_isAccessible)
+    screen_isAccessible.configure(bg='light blue')
+
+    create_dict(details_business["category"])
+
+    answer1 = StringVar()
+    answer2 = StringVar()
+    answer3 = StringVar()
+    answer4 = StringVar()
+    answer5 = StringVar()
+    answer6 = StringVar()
+    # answer7 = StringVar()
+
+    Label(screen_isAccessible, text="Please answer the questions below and press Yes/No *", bg='light blue',
+          font="calibri 8 bold").pack()
+    Label(screen_isAccessible, text="Wheelchair Impairment:", bg='light blue',
+          font="calibri 10 bold").place(x=10, y=0)
+
+    # region ---------------------------------QUESTIONS------------------------------
+    # question 1
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE1_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=37, y=20)
+    answer1 = StringVar(screen_isAccessible)
+    answer1.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer1, *OPTIONS_ANSWERS)
+    options.place(x=280, y=70, width=120, height=30)
+
+    # question 2
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE2_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=130, y=95)
+    answer2 = StringVar(screen_isAccessible)
+    answer2.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer2, *OPTIONS_ANSWERS)
+    options.place(x=280, y=120, width=120, height=30)
+
+    # question 3
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE4_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=140, y=145)
+    answer3 = StringVar(screen_isAccessible)
+    answer3.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer3, *OPTIONS_ANSWERS)
+    options.place(x=280, y=200, width=120, height=30)
+
+    # question 4
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE5_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=170, y=225)
+    answer4 = StringVar(screen_isAccessible)
+    answer4.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer4, *OPTIONS_ANSWERS)
+    options.place(x=280, y=255, width=120, height=30)
+
+    # question 5
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE6_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=100, y=280)
+    answer5 = StringVar(screen_isAccessible)
+    answer5.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer5, *OPTIONS_ANSWERS)
+    options.place(x=280, y=310, width=120, height=30)
+
+    # question 6
+    Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE7_WHEELCHAIR, bg='light blue',
+          font="calibri 15").place(x=140, y=350)
+    answer6 = StringVar(screen_isAccessible)
+    answer6.set("select option")  # default value
+    options = OptionMenu(screen_isAccessible, answer6, *OPTIONS_ANSWERS)
+    options.place(x=280, y=380, width=120, height=30)
+
+    # # question 7
+    # Label(screen_isAccessible, text="Wheelchair Impairment:", bg='light blue',
+    #       font="calibri 10 bold").place(x=10, y=405)
+    # Label(screen_isAccessible, text=B_OWNER_QUESTION_STORE3_VISION, bg='light blue',
+    #       font="calibri 15").place(x=90, y=420)
+    # answer7 = StringVar(screen_isAccessible)
+    # answer7.set("select option")  # default value
+    # options = OptionMenu(screen_isAccessible, answer7, *OPTIONS_ANSWERS)
+    # options.place(x=280, y=470, width=120, height=30)
+    # endregion
+    submit1 = Button(screen_isAccessible, bg="light grey", fg="blue", text="Next", font="calibri 10", height=1,
+                     width=15, command=done_cinema)
     submit1.place(x=570, y=470)
     screen_isAccessible.mainloop()
 
@@ -550,7 +649,17 @@ def done_cinema():
     print(accessibility_business)
     add_to_database(details_business["name"], details_business["category"], details_business["area"],
                     details_business["address"], accessibility_business["wheelchair"], accessibility_business["vision"],
-                    accessibility_business["hearing"], "https://realpython.com/iterate-through-dictionary-python/")
+                    accessibility_business["hearing"], details_business["website"])
+
+
+def done_store():
+    if answer1.get() == "No" or answer2.get() == "No" or answer3.get() == "No" or answer4.get() == "No" or answer5.get() \
+            == "No" or answer6.get() == "No" or answer7.get() == "No":
+        accessibility_business["wheelchair"] = False
+    print(accessibility_business)
+    add_to_database(details_business["name"], details_business["category"], details_business["area"],
+                    details_business["address"], accessibility_business["wheelchair"], accessibility_business["vision"],
+                    accessibility_business["hearing"], details_business["website"])
 
 
 def restaurant_pressed1():
@@ -592,6 +701,7 @@ def owner():
     global category
     global address
     global variable
+    global website
     screen_owner = Toplevel(screen)
     screen_owner.title("Business Owner")
     screen_owner.geometry(f"{WIDTH}x{HEIGHT}")
@@ -602,6 +712,7 @@ def owner():
     name_business = StringVar()
     category = StringVar()
     address = StringVar()
+    website = StringVar()
 
     Label(screen_owner, text="Please enter details bellow: ", bg='light blue', font="calibri 15 bold").pack()
     Label(screen_owner, text="Name of your business *", bg='light blue', font="calibri 15").pack()
@@ -620,11 +731,14 @@ def owner():
     store_btn.place(x=410, y=400)
 
     Label(screen_owner, text="The area of your business *", bg='light blue', font="calibri 15").place(
-        x=180, y=160)
+        x=180, y=120)
     variable = StringVar(screen_owner)
     variable.set("select option")  # default value
     options = OptionMenu(screen_owner, variable, *OPTIONS_AREA)
-    options.place(x=230, y=200, width=120, height=30)
+    options.place(x=230, y=150, width=120, height=30)
+
+    Label(screen_owner, text="Link to your business website *", bg='light blue', font="calibri 15").place(x=180, y=190)
+    website_entry = Entry(screen_owner, textvariable=website).place(width=250, height=30, x=180, y=230)
 
     Label(screen_owner, text="The address of your business *", bg='light blue', font="calibri 15").place(x=170, y=260)
     address_entry = Entry(screen_owner, textvariable=address).place(x=190, y=300, width=200, height=30)
@@ -637,6 +751,7 @@ def owner_done():
     details_business["name"] = name_business.get()
     details_business["area"] = variable.get()
     details_business["address"] = address.get()
+    details_business["website"] = website.get()
     print(details_business)
     if details_business["category"] == "cinema / theater":
         create_window_question_cinema()
@@ -646,7 +761,7 @@ def owner_done():
         pass
     add_to_database(details_business["name"], details_business["category"], details_business["area"],
                     details_business["address"], accessibility_business["wheelchair"], accessibility_business["vision"],
-                    accessibility_business["hearing"], "https://realpython.com/iterate-through-dictionary-python/")
+                    accessibility_business["hearing"], details_business["website"])
     print("done")
 
 
